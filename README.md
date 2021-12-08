@@ -35,6 +35,6 @@ To run the simulation in an empty world:
 
 In order to run the simulation in an environment with the presence of obstacles, you can uncomment the lines 3 to 6 in launch file.
 
-
+Please feel free to contact me if you have any problem in running the simulation.
 
 
