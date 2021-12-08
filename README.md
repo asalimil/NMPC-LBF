@@ -1,5 +1,7 @@
 # NMPC-LBF
 
+This repository includes the python codes for implementation of NMPC-LBF method.
+
 Please install the following packages and softwares in python:
 
 $ pip install casadi
