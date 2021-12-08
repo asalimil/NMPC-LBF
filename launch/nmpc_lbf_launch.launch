@@ -1,5 +1,5 @@
 <launch> 
-  <node pkg="mpc_lbf" type="twentyfifth_scenario_cbf_encoded.py" name="move_node_1" output="screen" />
+  <node pkg="nmpc_lbf" type="nmpc_lbf.py" name="move_node_1" output="screen" />
   <!-- <node pkg="nmpc_lbf" type="combination_obstacle_1_s12.py" name="combination_obstacle_1" output="screen" />
   <node pkg="nmpc_lbf" type="combination_obstacle_2_s12.py" name="combination_obstacle_2" output="screen" />
   <node pkg="nmpc_lbf" type="combination_obstacle_3_s12.py" name="combination_obstacle_3" output="screen" />
