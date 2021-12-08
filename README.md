@@ -33,7 +33,7 @@ To run the simulation in an empty world:
 
 2) $ roslaunch nmpc_lbf nmpc_lbf_launch.launch
 
-In order to run the simulation in an environment with the presence of obstacles, you can uncomment the lines 2-5 in launch file.
+In order to run the simulation in an environment with the presence of obstacles, you can uncomment the lines 3 to 6 in launch file.
 
 
 
