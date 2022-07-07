@@ -283,32 +283,11 @@ for l in range(numLayers):
 
 # print(WB_sym)
 CBC = []
-for k in range(M):
-    #
-    h, hdot = FP_BP(X[0:2,k], WB_sym, numLayers)
-    # print("===> ", np.shape(h), np.shape(hdot))
-    # gRl is rotation matrix from local to global frame
-    # h = FP(X[0:2,k], WB_sym, numLayers)
-    # print("h: ", h)
-    # delta = 0.00001
-    # dx = np.array([[delta],[0.0]])
-    # dy = np.array([[0.0],[delta]])
-    # hdot_dx = (FP(X[0:2,k] + dx, WB_sym, numLayers) - FP(X[0:2,k] - dx, WB_sym, numLayers))/(2*delta)
-    # hdot_dy = (FP(X[0:2,k] + dy, WB_sym, numLayers) - FP(X[0:2,k] - dy, WB_sym, numLayers))/(2*delta)
-    # hdot = np.array([[hdot_dx], [hdot_dy]])
-    # hdot = np.array([[hdot[0]], [hdot[1]], [0.0]])
-    # print("hdot: ", hdot)
-    # Control Barrier Condition
-    gx = np.array([[np.cos(X[2,k]), 0.0], [np.sin(X[2,k]), 0.0]])
-    # modified unicycle model
-    # gx = np.array([[np.cos(X[2,k]), -lc*np.sin(X[2,k])], [np.sin(X[2,k]), lc*np.cos(X[2,k])], [0.0, 1.0]])
-    # cbc = mtimes(hdot.T, mtimes(gx, U[:,k])) + 0.5*BF
-    # cbc = mtimes(hdot.T, mtimes(gx, U[:,k])) + 0.1*h
-    # print("==> ", np.shape( mtimes(hdot, mtimes(gx, U[:,k]))))
-    cbc = mtimes(hdot, mtimes(gx, U[:,k])) + 0.1*h
-    # cbc = mtimes(hdot.T, mtimes(gx, U[:,k])) + 0.1*tan(h)
-    # print("cbc: ", np.shape(cbc))
-    # cbc = mtimes(hdot.T, mtimes(gx, U[:,k])) + 1/np.log(1+BF)
+for k in range(M-1):
+    # Discrete-Time CBF
+    h = FP_BP(X[0:2,k], WB_sym, numLayers)
+    h_next = FP_BP(X[0:2,k+1], WB_sym, numLayers)
+    cbc = h_next - h + 0.1*h
     CBC = vertcat(CBC, cbc)
 
 
