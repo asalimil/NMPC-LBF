@@ -285,8 +285,8 @@ for l in range(numLayers):
 CBC = []
 for k in range(M-1):
     # Discrete-Time CBF
-    h = FP_BP(X[0:2,k], WB_sym, numLayers)
-    h_next = FP_BP(X[0:2,k+1], WB_sym, numLayers)
+    h, _ = FP_BP(X[0:2,k], WB_sym, numLayers)
+    h_next, _ = FP_BP(X[0:2,k+1], WB_sym, numLayers)
     cbc = h_next - h + 0.1*h
     CBC = vertcat(CBC, cbc)
 
